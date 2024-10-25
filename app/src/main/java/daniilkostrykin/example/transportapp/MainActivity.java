@@ -1,7 +1,6 @@
 package daniilkostrykin.example.transportapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -11,9 +10,9 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.widget.Button; // Импортируем класс Button
-import android.view.View;     // Импортируем класс View для обработки кликов
-
+import android.widget.Button;
+import android.webkit.WebChromeClient;  // Для обработки alert
+import androidx.appcompat.app.AlertDialog;  // Для диалога
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);  // Включаем поддержку localStorage
 
-
         final Activity activity = this;
 
+        // Обрабатываем WebViewClient
         webView.setWebViewClient(new WebViewClient() {
             @SuppressWarnings("deprecation")
             @Override
@@ -46,16 +45,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Устанавливаем WebChromeClient для обработки alert()
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, android.webkit.JsResult result) {
+                // Отображаем сообщение alert в диалоговом окне
+                showSavingsDialog(message);
+                result.confirm();
+                return true;
+            }
+        });
+
         // Загружаем сайт
         webView.loadUrl("https://daniilkostrykin.github.io/Transport/");
+
+        // Находим кнопку по ID и добавляем обработчик нажатий
         Button savingsButton = findViewById(R.id.savingsButton);
         savingsButton.setOnClickListener(v -> {
             // Вызываем функцию calculateSavings() из script.js
-            webView.evaluateJavascript("javascript:calculateSavings()", value -> {
-                // Получаем значение экономии и выводим его, например, через Toast
-                Toast.makeText(MainActivity.this, "Сэкономлено: " + value + " рублей", Toast.LENGTH_LONG).show();
-            });
+            webView.evaluateJavascript("javascript:calculateSavings()", null);
         });
+    }
+
+    // Метод для отображения диалогового окна
+    private void showSavingsDialog(String savingsValue) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Экономия")
+                .setMessage(savingsValue)  // В этом сообщении уже будет текст из alert
+                .setPositiveButton("ОК", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 
     @Override
@@ -66,5 +84,4 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();  // Если нельзя вернуться назад, то выполняется стандартное действие
         }
     }
-
 }
