@@ -1,0 +1,267 @@
+html.preload body {
+  visibility: hidden;
+}
+
+html.preload body * {
+  visibility: hidden;
+}
+body {
+  font-family: sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body.dark-theme {
+  background-color: #000000;
+  transition: background-color 0.3s ease;
+  color: #4d4de2;
+}
+body.dark-theme form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(187, 17, 17, 0.2);
+  background-color: #df080800;
+  margin: 50px auto; /* Изменение: margin: 20px auto; */
+}
+body.light-theme {
+  background-color: rgba(38, 38, 247, 0.205);
+  color: rgba(50, 59, 55, 0.966);
+}
+
+body.light-theme form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgba(38, 38, 247, 0.233);
+  margin: 50px auto; /* Изменение: margin: 20px auto; */
+}
+
+@media screen and (max-width: 425px) {
+  /* Медиа-запрос для экранов шириной 425 пикселей или меньше */
+  body.light-theme form {
+    width: 80%; /* Занимаем 80% ширины экрана */
+    margin: 20px auto; /* Автоматические отступы по горизонтали */
+  }
+  body.dark-theme form {
+    width: 80%; /* Занимаем 80% ширины экрана */
+    margin: 20px auto; /* Автоматические отступы по горизонтали */
+  }
+}
+
+body.light-theme form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+body.light-theme form input[type="date"],
+body.light-theme form input[type="number"] {
+  width: 70%;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: rgba(38, 38, 247, 0.233);
+  border: 2px solid #0000004d;
+}
+body.dark-theme form input[type="date"],
+body.dark-theme form input[type="number"] {
+  width: 70%;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #24223f;
+  border: 2px solid #000000;
+  color: rgb(26, 91, 148);
+}
+body.light-theme form button,
+body.light-theme .buttons button {
+  padding: 10px 20px;
+  background-color: rgba(38, 38, 247, 0.63);
+  color: yellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  width: 100%; /* Ensure all buttons have the same width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+body.light-theme form button:hover,
+body.light-theme .buttons button:hover {
+  background-color: #4546a0;
+}
+
+body.light-theme .buttons {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  width: 80%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+body.dark-theme .buttons {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  width: 80%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+#themeToggle {
+  /*position: static;
+  left: auto;
+  top: auto; /* Изменено с -50px на -30px */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  border-radius: 0.5em;
+  font-weight: 600;
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  margin: 20px 0; /* Отступы вокруг кнопки */
+  border: none; /* Убираем границу */
+  font-size: 16px; /* Размер шрифта */
+  height: auto; /* Автоматическая высота */
+  width: auto; /* Автоматическая ширина */
+  /* z-index: 1;  /* Устанавливаем z-индекс кнопки выше, чем у формы */
+}
+body.light-theme #themeToggle {
+  background-color: rgba(172, 172, 211, 0.712); /* Цвет фона кнопки */
+  color: yellow; /* Цвет текста кнопки */
+}
+body.dark-theme #themeToggle {
+  background-color: #000000; /* Цвет фона кнопки */
+  color: #3a339b; /* Цвет текста кнопки */
+}
+
+body.dark-theme form label {
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+body.dark-theme form button,
+body.dark-theme .buttons button {
+  padding: 10px 20px;
+  background-color: #4d4de2;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  width: 100%; /* Ensure all buttons have the same width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+body.dark-theme form button:hover,
+body.dark-theme .buttons button:hover {
+  background-color: #4546a0;
+}
+
+body.dark-theme .buttons button {
+  padding: 10px 20px;
+  background-color: #4d4de2;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  flex-basis: 48%;
+}
+
+body.dark-theme .buttons button:hover {
+  background-color: #4546a0;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 86%;
+  padding: 10px 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  height: 10px;
+}
+body.light-theme .buttons,
+body.dark-theme .buttons {
+  /* ...другие  стили */
+  margin-left: -76px; /*  Например, 50px от левого  края */
+}
+body.light-theme .footer {
+  background-color: rgba(38, 38, 247, 0.233);
+  color: rgba(50, 59, 55, 0.966);
+}
+body.dark-theme .footer {
+  background-color: #01010e;
+  color: #4d4de2;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    width: 96%; /* Задаём  100% ширину */
+  }
+}
+#economy {
+  margin-left: 73px;
+}
+#watch {
+  margin-left: 78px;
+}
+body.light-theme #submit {
+  position: relative;
+  padding: 10px 20px;
+  background-color: #4d4de2;
+  width: 92%;
+  color: yellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  flex-basis: 40%;
+  max-width: 500px;
+  margin-top: 20px;
+  height: 100px;
+}
+body.light-theme #submit::hover {
+  background-color: #4546a0;
+}
+body.dark-theme #submit {
+  position: relative;
+  padding: 10px 20px;
+  background-color: #4d4de2;
+  width: 92%;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  flex-basis: 40%;
+  max-width: 500px;
+  margin-top: 20px;
+  height: 100px;
+}
+body.dark-theme #submit:hover {
+  background-color: #4546a0;
+}

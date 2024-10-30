@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Таблица поездок</title>
+    <link rel="stylesheet" href="styles2.css" />
+  </head>
+
+  <body>
+    <button id="downloadExcel">
+      Скачать в Excel
+    </button>
+    <div id="loadingMessage" style="display:none;">Загрузка таблицы...</div>
+    <div class="table-container">
+      <table id="tripTable">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Наземный транспорт</th>
+            <th>Электрички</th>
+            <th>Доп. поездки на метро</th>
+            <th>Доп. поездки на электричке</th>
+            <th>Итого</th>
+            <th>Стоимость поездок за день</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--    Строки таблицы  будут  здесь  -->
+        </tbody>
+      </table>
+
+      <div class="card-container">
+        <!--  Карточки будут  здесь  -->
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="script1.js"></script>
+  </body>
+</html>

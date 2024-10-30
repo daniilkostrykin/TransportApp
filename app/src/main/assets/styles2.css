@@ -1,0 +1,82 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  color: #4d4de2;
+  font-size: 16px; /* Базовый размер шрифта */
+}
+.loadingMessage{
+color:white;
+}
+button {
+  cursor: pointer;
+  background-color: #4d4de2; /* Цвет фона кнопки */
+  color: #000000; /* Цвет текста кнопки */
+  border-radius: 0.5em;
+  font-weight: 600;
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  margin: 20px 0; /* Отступы вокруг кнопки */
+  border: none; /* Убираем границу */
+  font-size: 16px; /* Размер шрифта */
+  height: auto; /* Автоматическая высота */
+  width: auto; /* Автоматическая ширина */
+}
+
+/* Основной стиль для больших экранов */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #092e04;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  table {
+    display: none; /* Скрываем стандартную таблицу */
+  }
+
+  .table-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Сетка с авто-заполнением */
+    gap: 20px; /* Расстояние между карточками */
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #092e04;
+    background-color: #1f1818c0;
+    border-radius: 15px;
+    margin-bottom: 30px; /* Добавляем отступ между карточками */
+
+  }
+
+  .card div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+  }
+
+  .card div span:first-child {
+    font-weight: bold;
+  }
+}
+/* Для экранов шире 768px, возвращаем таблицу 
+@media (min-width: 769px) {
+  .table-container {
+    display: none; /* Скрываем карточки 
+  }
+
+  table {
+    display: table;
+  }
+}*/
